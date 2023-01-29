@@ -42,8 +42,8 @@ gidNumber: 1002
 memberUid: user01
 memberUid: user02
 
-dn: cn=ec2admins,ou=users,dc=example,dc=org
-cn: ec2admins
+dn: cn=eucentraladmins,ou=users,dc=example,dc=org
+cn: eucentraladmins
 objectClass: posixGroup
 gidNumber: 1003
 memberUid: user01
