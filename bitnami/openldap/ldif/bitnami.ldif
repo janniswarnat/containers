@@ -1,0 +1,57 @@
+
+dn: dc=example,dc=org
+objectClass: dcObject
+objectClass: organization
+dc: example
+o: example
+
+dn: ou=users,dc=example,dc=org
+objectClass: organizationalUnit
+ou: users
+
+dn: cn=user01,ou=users,dc=example,dc=org
+cn: User1
+cn: user01
+sn: Bar1
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+userPassword: password1
+uid: user01
+uidNumber: 1000
+gidNumber: 1000
+homeDirectory: /home/user01
+
+dn: cn=user02,ou=users,dc=example,dc=org
+cn: User2
+cn: user02
+sn: Bar2
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+userPassword: password2
+uid: user02
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/user02
+
+dn: cn=readers,ou=users,dc=example,dc=org
+cn: readers
+objectClass: posixGroup
+gidNumber: 1002
+memberUid: user01
+memberUid: user02
+
+dn: cn=ec2admins,ou=users,dc=example,dc=org
+cn: ec2admins
+objectClass: posixGroup
+gidNumber: 1003
+memberUid: user01
+
+dn: cn=raspberryadmins,ou=users,dc=example,dc=org
+cn: raspberryadmins
+objectClass: posixGroup
+gidNumber: 1004
+memberUid: user02
+
+
