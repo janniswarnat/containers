@@ -5,13 +5,12 @@
 > Grafana Tempo is a distributed tracing system that has out-of-the-box integration with Grafana. It is highly scalable and works with many popular tracing protocols.
 
 [Overview of Grafana Tempo](https://github.com/grafana/tempo)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-$ docker run --name grafana-tempo bitnami/grafana-tempo:latest
+docker run --name grafana-tempo bitnami/grafana-tempo:latest
 ```
 
 ## Why use Bitnami Images?
@@ -36,21 +35,21 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 The recommended way to get the Bitnami grafana-tempo Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/grafana-tempo).
 
 ```console
-$ docker pull bitnami/grafana-tempo:latest
+docker pull bitnami/grafana-tempo:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/grafana-tempo/tags/) in the Docker Hub Registry.
 
 ```console
-$ docker pull bitnami/grafana-tempo:[TAG]
+docker pull bitnami/grafana-tempo:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP:latest .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP:latest .
 ```
 
 ## Why use a non-root container?
@@ -64,13 +63,13 @@ Non-root container images add an extra layer of security and are generally recom
 To run commands inside this container you can use `docker run`, for example to execute `grafana-tempo --version` you can follow the example below:
 
 ```console
-$ docker run --rm --name grafana-tempo bitnami/grafana-tempo:latest -- --version
+docker run --rm --name grafana-tempo bitnami/grafana-tempo:latest -- --version
 ```
 
 In order for the container to work, you need to mount your custom `tempo.yaml` file in `/bitnami/grafana-tempo/conf/`. The following example runs Grafana Tempo with a custom configuration file:
 
 ```console
-$ docker run --rm --name grafana-tempo -v /path/to/tempo.yaml:/bitnami/grafana-tempo/conf/tempo.yaml bitnami/grafana-tempo:latest
+docker run --rm --name grafana-tempo -v /path/to/tempo.yaml:/bitnami/grafana-tempo/conf/tempo.yaml bitnami/grafana-tempo:latest
 ```
 
 Using docker-compose:
@@ -103,7 +102,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

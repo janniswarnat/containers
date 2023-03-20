@@ -41,6 +41,7 @@ export PATH="${LDAP_BIN_DIR}:${LDAP_SBIN_DIR}:$PATH"
 export LDAP_TLS_CERT_FILE="${LDAP_TLS_CERT_FILE:-}"
 export LDAP_TLS_KEY_FILE="${LDAP_TLS_KEY_FILE:-}"
 export LDAP_TLS_CA_FILE="${LDAP_TLS_CA_FILE:-}"
+export LDAP_TLS_VERIFY_CLIENTS="${LDAP_TLS_VERIFY_CLIENTS:-never}"
 export LDAP_TLS_DH_PARAMS_FILE="${LDAP_TLS_DH_PARAMS_FILE:-}"
 # Users
 export LDAP_DAEMON_USER="slapd"
@@ -233,6 +234,84 @@ ldap_stop() {
         return 1
     fi
 }
+########################
+# Create slapd.ldif
+# Globals:
+#   LDAP_*
+# Arguments:
+#   None
+# Returns:
+#   None
+#########################
+ldap_create_slapd_file() {
+    info "Creating slapd.ldif"
+    cat > "${LDAP_SHARE_DIR}/slapd.ldif" << EOF
+#
+# See slapd-config(5) for details on configuration options.
+# This file should NOT be world readable.
+#
+
+dn: cn=config
+objectClass: olcGlobal
+cn: config
+olcArgsFile: /opt/bitnami/openldap/var/run/slapd.args
+olcPidFile: /opt/bitnami/openldap/var/run/slapd.pid
+
+#
+# Schema settings
+#
+
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: schema
+
+include: file:///opt/bitnami/openldap/etc/schema/core.ldif
+
+#
+# Frontend settings
+#
+
+dn: olcDatabase=frontend,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcFrontendConfig
+olcDatabase: frontend
+
+#
+# Configuration database
+#
+
+dn: olcDatabase=config,cn=config
+objectClass: olcDatabaseConfig
+olcDatabase: config
+olcAccess: to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage by * none
+
+#
+# Server status monitoring
+#
+
+dn: olcDatabase=monitor,cn=config
+objectClass: olcDatabaseConfig
+olcDatabase: monitor
+olcAccess: to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" read by dn.base="cn=Manager,dc=my-domain,dc=com" read by * none
+
+#
+# Backend database definitions
+#
+
+dn: olcDatabase=mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: mdb
+olcDbMaxSize: 1073741824
+olcSuffix: dc=my-domain,dc=com
+olcRootDN: cn=Manager,dc=my-domain,dc=com
+olcMonitoring: FALSE
+olcDbDirectory:	/bitnami/openldap/data
+olcDbIndex: objectClass eq,pres
+olcDbIndex: ou,cn,mail,surname,givenname eq,pres,sub
+EOF
+
+}
 
 ########################
 # Create LDAP online configuration
@@ -246,6 +325,7 @@ ldap_stop() {
 ldap_create_online_configuration() {
     info "Creating LDAP online configuration"
 
+    ldap_create_slapd_file
     ! am_i_root && replace_in_file "${LDAP_SHARE_DIR}/slapd.ldif" "uidNumber=0" "uidNumber=$(id -u)"
     local -a flags=(-F "$LDAP_ONLINE_CONF_DIR" -n 0 -l "${LDAP_SHARE_DIR}/slapd.ldif")
     if am_i_root; then
@@ -585,6 +665,9 @@ olcTLSCertificateFile: $LDAP_TLS_CERT_FILE
 -
 replace: olcTLSCertificateKeyFile
 olcTLSCertificateKeyFile: $LDAP_TLS_KEY_FILE
+-
+replace: olcTLSVerifyClient
+olcTLSVerifyClient: $LDAP_TLS_VERIFY_CLIENTS
 EOF
     if [[ -f "$LDAP_TLS_DH_PARAMS_FILE" ]]; then
         cat >> "${LDAP_SHARE_DIR}/certs.ldif" << EOF

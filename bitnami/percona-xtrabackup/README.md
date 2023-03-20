@@ -5,13 +5,12 @@
 > Percona XtraBackup is a set of tools for performing backups of MySQL databases. It executes online non-blocking, tightly compressed, and highly secure full backups on transactional systems.
 
 [Overview of Percona XtraBackup](https://www.percona.com/software/mysql-database/percona-xtrabackup/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-$ docker run --name percona-xtrabackup bitnami/percona-xtrabackup:latest
+docker run --name percona-xtrabackup bitnami/percona-xtrabackup:latest
 ```
 
 ## Why use Bitnami Images?
@@ -36,21 +35,21 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 The recommended way to get the Bitnami percona-xtrabackup Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/percona-xtrabackup).
 
 ```console
-$ docker pull bitnami/percona-xtrabackup:latest
+docker pull bitnami/percona-xtrabackup:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/percona-xtrabackup/tags/) in the Docker Hub Registry.
 
 ```console
-$ docker pull bitnami/percona-xtrabackup:[TAG]
+docker pull bitnami/percona-xtrabackup:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP:latest .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP:latest .
 ```
 
 ## Configuration
@@ -60,7 +59,7 @@ $ docker build -t bitnami/APP:latest .
 To run commands inside this container you can use `docker run`. The container has the Percona XtraBackup tools `xtrabackup`, `xbstream`, `xbcrypt` and `xbcloud`. For example, to run `xtrabackup --version` you can follow the example below:
 
 ```console
-$ docker run --rm --name percona-xtrabackup bitnami/percona-xtrabackup:latest -- xtrabackup --version
+docker run --rm --name percona-xtrabackup bitnami/percona-xtrabackup:latest -- xtrabackup --version
 ```
 
 Check the [official percona-xtrabackup documentation](https://www.percona.com/doc/percona-xtrabackup/LATEST/manual.html) for a list of the available parameters.
@@ -81,7 +80,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

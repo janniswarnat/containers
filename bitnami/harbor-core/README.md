@@ -6,17 +6,15 @@
 
 [Overview of Harbor Core](https://goharbor.io/)
 
-
-
 ## TL;DR
 
 ```console
-$ curl -LO https://raw.githubusercontent.com/bitnami/containers/main/bitnami/harbor-portal/docker-compose.yml
-$ curl -L https://github.com/bitnami/containers/blob/main/bitnami/harbor-portal/archive/master.tar.gz | tar xz --strip=1 --wildcards '*-master/config'
-$ docker-compose up
+curl -LO https://raw.githubusercontent.com/bitnami/containers/main/bitnami/harbor-portal/docker-compose.yml
+curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=2 containers-main/bitnami/harbor-portal && cp -RL harbor-portal/config . && rm -rf harbor-portal
+docker-compose up
 ```
 
-> Please note we are downloading the docker-compose.yml file from the Harbor Portal component repository.
+> Please note you are downloading the docker-compose.yml file from the Harbor Portal component repository.
 
 ## Why use Bitnami Images?
 
@@ -48,7 +46,7 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 
 Harbor Core is a component of the Harbor application. In order to get the Harbor application running on Kubernetes we encourage you to check the [bitnami/harbor Helm chart](https://github.com/bitnami/charts/tree/master/bitnami/harbor) and configure it using the options exposed in the values.yaml file.
 
-For further information about the specific component itself, please refer to the [source repository documentation](https://github.com/goharbor/harbor/tree/master/docs).
+For further information about the specific component itself, please refer to the [source repository documentation](https://github.com/goharbor/harbor/tree/main/docs).
 
 ## Contributing
 
@@ -66,7 +64,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

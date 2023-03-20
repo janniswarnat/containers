@@ -1,4 +1,6 @@
+<!-- markdownlint-disable-next-line -->
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/bitnami/containers/blob/main/CONTRIBUTING.md)
+<!-- markdownlint-disable-next-line -->
 [![[CI/CD] CD Pipeline](https://github.com/bitnami/containers/actions/workflows/cd-pipeline.yml/badge.svg)](https://github.com/bitnami/containers/actions/workflows/cd-pipeline.yml)
 
 # The Bitnami Containers Library
@@ -19,21 +21,21 @@ Popular applications, provided by [Bitnami](https://bitnami.com), containerized 
 The recommended way to get any of the Bitnami Images is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/).
 
 ```console
-$ docker pull bitnami/APP
+docker pull bitnami/APP
 ```
 
 To use a specific version, you can pull a versioned tag.
 
 ```console
-$ docker pull bitnami/APP:[TAG]
+docker pull bitnami/APP:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP .
 ```
 
 > Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` placeholders in the example command above with the correct values.
@@ -43,8 +45,8 @@ $ docker build -t bitnami/APP .
 The main folder of each application contains a functional `docker-compose.yml` file. Run the application using it as shown below:
 
 ```console
-$ curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/APP/docker-compose.yml > docker-compose.yml
-$ docker-compose up -d
+curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/APP/docker-compose.yml > docker-compose.yml
+docker-compose up -d
 ```
 
 > Remember to replace the `APP` placeholder in the example command above with the correct value.
@@ -70,7 +72,7 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.

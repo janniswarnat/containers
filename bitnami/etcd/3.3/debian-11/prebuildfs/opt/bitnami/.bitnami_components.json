@@ -1,23 +1,23 @@
 {
     "etcd": {
         "arch": "amd64",
-        "digest": "b698c0682baae4b6da225a83361c5551016abc58bd183aeda2a5b2ae8333bdc7",
+        "digest": "383a4461e3db537007c95a8a7659e03148760ff1adcf04f11aaf48f22ab26fee",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "3.3.27-157"
+        "version": "3.3.27-159"
     },
     "gosu": {
         "arch": "amd64",
-        "digest": "9ab9654690d90d3c49ff66fb1eb286487e318adc899d036bc45922f6b176865b",
+        "digest": "bf2b90a31df691e3648c4a41190a926bb638c3a9fa1dfcde36623ce1bfaadc23",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.16.0-1"
+        "version": "1.16.0-3"
     },
     "yq": {
         "arch": "amd64",
-        "digest": "33fec06619aa3c1f7ea3c2516bf36f79af01354972ff06998ca6fe1d65078998",
+        "digest": "13a33ecf140c2b141bffd4969e38a75b67db29525f166d6a1c21b4a1b6aff2fd",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "4.30.8-1"
+        "version": "4.32.1-0"
     }
 }

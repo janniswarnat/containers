@@ -1,9 +1,10 @@
 {
   "context": {
     "resources": {
-      "url": "{SHA_ARCHIVE}",
+      "url": "{VIB_ENV_CONTAINER_URL}",
       "path": "{VIB_ENV_PATH}"
-    }
+    },
+    "runtime_parameters": "Y29tbWFuZDogWyJ0YWlsIiwgIi1mIiwgIi9kZXYvbnVsbCJd"
   },
   "phases": {
     "package": {
@@ -34,6 +35,21 @@
     "verify": {
       "actions": [
         {
+          "action_id": "goss",
+          "params": {
+            "resources": {
+              "path": "/.vib"
+            },
+            "tests_file": "rails/goss/goss.yaml",
+            "vars_file": "rails/goss/vars.yaml",
+            "remote": {
+              "pod": {
+                "workload": "deploy-rails"
+              }
+            }
+          }
+        },
+        {
           "action_id": "trivy",
           "params": {
             "threshold": "CRITICAL",
@@ -50,6 +66,25 @@
               "OS"
             ]
           }
+        },
+        {
+          "action_id": "osspi-application",
+          "params": {
+            "additional_packages_file": "{VIB_ENV_PATH}/osspi-packages.json",
+            "scan_type": "BASE_OS",
+            "osm": {
+              "product_name": "main-catalog-{VIB_ENV_CONTAINER}",
+              "product_version": "{VIB_ENV_APP_VERSION}-{VIB_ENV_OS_FLAVOUR}-container"
+            },
+            "resources": {
+              "url": "{VIB_ENV_PACKAGES_JSON_URL}",
+              "path": "/",
+              "authn": {
+                  "header": "Authorization",
+                  "token": "Bearer {VIB_ENV_GITHUB_TOKEN}"
+                }
+            }
+          }
         }
       ]
     },
@@ -64,8 +99,10 @@
             "repository": {
               "kind": "OCI",
               "url": "{VIB_ENV_REGISTRY_URL}",
-              "username": "{VIB_ENV_REGISTRY_USERNAME}",
-              "password":  "{VIB_ENV_REGISTRY_PASSWORD}"
+              "authn": {
+                "username": "{VIB_ENV_REGISTRY_USERNAME}",
+                "password":  "{VIB_ENV_REGISTRY_PASSWORD}"
+              }
             }
           }
         }

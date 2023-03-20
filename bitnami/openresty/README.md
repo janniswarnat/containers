@@ -5,18 +5,17 @@
 > OpenResty is a platform for scalable Web applications and services. It is based on enhanced versions of NGINX and LuaJIT.
 
 [Overview of OpenResty](https://openresty.org/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-$ docker run --name openresty bitnami/openresty:latest
+docker run --name openresty bitnami/openresty:latest
 ```
 
 ```console
-$ curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/openresty/docker-compose.yml > docker-compose.yml
-$ docker-compose up -d
+curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/openresty/docker-compose.yml > docker-compose.yml
+docker-compose up -d
 ```
 
 ## Why use Bitnami Images?
@@ -45,7 +44,7 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 The recommended way to get the Bitnami OpenResty Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/openresty).
 
 ```console
-$ docker pull bitnami/openresty:latest
+docker pull bitnami/openresty:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the
@@ -53,15 +52,15 @@ To use a specific version, you can pull a versioned tag. You can view the
 in the Docker Hub Registry.
 
 ```console
-$ docker pull bitnami/openresty:[TAG]
+docker pull bitnami/openresty:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP:latest .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP:latest .
 ```
 
 ## Hosting a static website
@@ -69,7 +68,7 @@ $ docker build -t bitnami/APP:latest .
 This OpenResty image exposes a volume at `/app`. Content mounted here is served by the default catch-all server block.
 
 ```console
-$ docker run -v /path/to/app:/app bitnami/openresty:latest
+docker run -v /path/to/app:/app bitnami/openresty:latest
 ```
 
 or by modifying the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/openresty/docker-compose.yml) file present in this repository:
@@ -88,7 +87,7 @@ services:
 To access your web server from your host machine you can ask Docker to map a random port on your host to ports `8080` and `8443` exposed in the container.
 
 ```console
-$ docker run --name nginx -P bitnami/openresty:latest
+docker run --name nginx -P bitnami/openresty:latest
 ```
 
 Run `docker port` to determine the random ports Docker assigned.
@@ -101,12 +100,18 @@ $ docker port openresty
 You can also manually specify the ports you want forwarded from your host to the container.
 
 ```console
-$ docker run -p 9000:8080 bitnami/openresty:latest
+docker run -p 9000:8080 bitnami/openresty:latest
 ```
 
 Access your web server in the browser by navigating to `http://localhost:9000`.
 
 ## Configuration
+
+### Initializing a new instance
+
+When the container is executed for the first time, it will execute the files with extensions `.sh` located at `/docker-entrypoint-initdb.d`.
+
+In order to have your custom files inside the docker image you can mount them as a volume.
 
 ### Adding custom server blocks
 
@@ -114,7 +119,7 @@ The default `nginx.conf` includes server blocks placed in `/opt/bitnami/openrest
 
 For example, in order add a server block for `www.example.com`:
 
-#### Step 1: Write your `my_server_block.conf` file with the following content.
+#### Step 1: Write your `my_server_block.conf` file with the following content
 
 ```nginx
 server {
@@ -125,10 +130,10 @@ server {
 }
 ```
 
-#### Step 2: Mount the configuration as a volume.
+#### Step 2: Mount the configuration as a volume
 
 ```console
-$ docker run --name openresty \
+docker run --name openresty \
   -v /path/to/my_server_block.conf:/opt/bitnami/openresty/nginx/conf/server_blocks/my_server_block.conf:ro \
   bitnami/openresty:latest
 ```
@@ -153,9 +158,9 @@ services:
 In your local computer, create a folder called `certs` and put your certificates files. Make sure you rename both files to `server.crt` and `server.key` respectively:
 
 ```console
-$ mkdir -p /path/to/openresty-persistence/certs
-$ cp /path/to/certfile.crt /path/to/openresty-persistence/certs/server.crt
-$ cp /path/to/keyfile.key  /path/to/openresty-persistence/certs/server.key
+mkdir -p /path/to/openresty-persistence/certs
+cp /path/to/certfile.crt /path/to/openresty-persistence/certs/server.crt
+cp /path/to/keyfile.key  /path/to/openresty-persistence/certs/server.key
 ```
 
 #### Step 2: Provide a custom Server Block for SSL connections
@@ -187,7 +192,7 @@ Write your `my_server_block.conf` file with the SSL configuration and the relati
 Run the OpenResty image, mounting the certificates directory from your host.
 
 ```console
-$ docker run --name openresty \
+docker run --name openresty \
   -v /path/to/my_server_block.conf:/opt/bitnami/openresty/nginx/conf/server_blocks/my_server_block.conf:ro \
   -v /path/to/openresty-persistence/certs:/certs \
   bitnami/openresty:latest
@@ -209,9 +214,8 @@ services:
 
 The image looks for configurations in `/opt/bitnami/openresty/nginx/conf/nginx.conf`. You can overwrite the `nginx.conf` file using your own custom configuration file.
 
-
 ```console
-$ docker run --name openresty \
+docker run --name openresty \
   -v /path/to/your_nginx.conf:/opt/bitnami/openresty/nginx/conf/nginx.conf:ro \
   bitnami/openresty:latest
 ```
@@ -226,6 +230,17 @@ services:
       - /path/to/your_nginx.conf:/opt/bitnami/openresty/nginx/conf/nginx.conf:ro
   ...
 ```
+
+### Adding lua modules
+
+Openresty uses its own Lua's package manager named `opm`. It is advised to use `opm` [instead of other Lua's package manager like `luarocks`](https://openresty.org/en/using-luarocks.html). You can easily run the `opm` command from the container command-line, or build your custom image by extending Bitnami's:
+
+```Dockerfile
+FROM bitnami/openresty:latest
+RUN opm get openresty/lua-resty-lock
+```
+
+Additionally, you can install your custom Lua modules using [your custom init scripts](#initializing-a-new-instance).
 
 ## Reverse proxy to other containers
 
@@ -251,20 +266,20 @@ server {
 
 **Further Reading:**
 
-  - [NGINX reverse proxy](http://nginx.com/resources/admin-guide/reverse-proxy/)
+* [NGINX reverse proxy](http://nginx.com/resources/admin-guide/reverse-proxy/)
 
 ## Logging
 
 The Bitnami OpenResty Docker image sends the container logs to the `stdout`. To view the logs:
 
 ```console
-$ docker logs openresty
+docker logs openresty
 ```
 
 or using Docker Compose:
 
 ```console
-$ docker-compose logs openresty
+docker-compose logs openresty
 ```
 
 You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
@@ -277,10 +292,11 @@ The Bitnami OpenResty Docker image is designed to be extended so it can be used 
 
 Before extending this image, please note there are certain configuration settings you can modify using the original image:
 
-- Settings that can be adapted using environment variables. For instance, you can change the port used by OpenResty for HTTP setting the environment variable `OPENRESTY_HTTP_PORT_NUMBER`.
-- [Adding custom server blocks](#adding-custom-server-blocks).
-- [Replacing the 'nginx.conf' file](#full-configuration).
-- [Using custom SSL certificates](#using-custom-ssl-certificates).
+* Settings that can be adapted using environment variables. For instance, you can change the port used by OpenResty for HTTP setting the environment variable `OPENRESTY_HTTP_PORT_NUMBER`.
+* [Initializing a new instance](#initializing-a-new-instance)
+* [Adding custom server blocks](#adding-custom-server-blocks).
+* [Replacing the 'nginx.conf' file](#full-configuration).
+* [Using custom SSL certificates](#using-custom-ssl-certificates).
 
 If your desired customizations cannot be covered using the methods mentioned above, extend the image. To do so, create your own image using a Dockerfile with the format below:
 
@@ -292,10 +308,10 @@ FROM bitnami/openresty
 
 Here is an example of extending the image with the following modifications:
 
-- Install the `vim` editor
-- Modify the OpenResty configuration file
-- Modify the ports used by OpenResty
-- Change the user that runs the container
+* Install the `vim` editor
+* Modify the OpenResty configuration file
+* Modify the ports used by OpenResty
+* Change the user that runs the container
 
 ```Dockerfile
 FROM bitnami/openresty
@@ -320,9 +336,9 @@ USER 1002
 
 Based on the extended image, you can use a Docker Compose file like the one below to add other features:
 
-- Add a custom server block
-- Add custom certificates
-- Clone your web application and serve it through OpenResty
+* Add a custom server block
+* Add custom certificates
+* Clone your web application and serve it through OpenResty
 
 ```yaml
 version: '2'
@@ -361,7 +377,7 @@ Bitnami provides up-to-date versions of OpenResty, including security patches, s
 #### Step 1: Get the updated image
 
 ```console
-$ docker pull bitnami/openresty:latest
+docker pull bitnami/openresty:latest
 ```
 
 or if you're using Docker Compose, update the value of the image property to
@@ -372,25 +388,25 @@ or if you're using Docker Compose, update the value of the image property to
 Stop the currently running container using the command
 
 ```console
-$ docker stop openresty
+docker stop openresty
 ```
 
 or using Docker Compose:
 
 ```console
-$ docker-compose stop openresty
+docker-compose stop openresty
 ```
 
 #### Step 3: Remove the currently running container
 
 ```console
-$ docker rm -v openresty
+docker rm -v openresty
 ```
 
 or using Docker Compose:
 
 ```console
-$ docker-compose rm -v openresty
+docker-compose rm -v openresty
 ```
 
 #### Step 4: Run the new image
@@ -398,13 +414,13 @@ $ docker-compose rm -v openresty
 Re-create your container from the new image.
 
 ```console
-$ docker run --name nginx bitnami/openresty:latest
+docker run --name nginx bitnami/openresty:latest
 ```
 
 or using Docker Compose:
 
 ```console
-$ docker-compose up openresty
+docker-compose up openresty
 ```
 
 ## Contributing
@@ -423,7 +439,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

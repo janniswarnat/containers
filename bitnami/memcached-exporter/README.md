@@ -5,13 +5,12 @@
 > The memcached exporter exports metrics from a memcached server for consumption by prometheus.
 
 [Overview of Memcached Exporter](https://github.com/prometheus/memcached_exporter)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-$ docker run --name memcached-exporter bitnami/memcached-exporter:latest
+docker run --name memcached-exporter bitnami/memcached-exporter:latest
 ```
 
 ## Why use Bitnami Images?
@@ -40,21 +39,21 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 The recommended way to get the Bitnami Memcached Exporter Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/memcached-exporter).
 
 ```console
-$ docker pull bitnami/memcached-exporter:latest
+docker pull bitnami/memcached-exporter:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/memcached-exporter/tags/) in the Docker Hub Registry.
 
 ```console
-$ docker pull bitnami/memcached-exporter:[TAG]
+docker pull bitnami/memcached-exporter:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP:latest .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP:latest .
 ```
 
 ## Connecting to other containers
@@ -68,7 +67,7 @@ Containers attached to the same network can communicate with each other using th
 #### Step 1: Create a network
 
 ```console
-$ docker network create memcached-exporter-network --driver bridge
+docker network create memcached-exporter-network --driver bridge
 ```
 
 #### Step 2: Launch the memcached-exporter container within your network
@@ -76,7 +75,7 @@ $ docker network create memcached-exporter-network --driver bridge
 Use the `--network <NETWORK>` argument to the `docker run` command to attach the container to the `memcached-exporter-network` network.
 
 ```console
-$ docker run --name memcached-exporter-node1 --network memcached-exporter-network bitnami/memcached-exporter:latest
+docker run --name memcached-exporter-node1 --network memcached-exporter-network bitnami/memcached-exporter:latest
 ```
 
 #### Step 3: Run another containers
@@ -88,9 +87,8 @@ We can launch another containers using the same flag (`--network NETWORK`) in th
 Find all the configuration flags by executing the container with the `--help` flag:
 
 ```console
-$ docker run --rm bitnami/memcached-exporter --help
+docker run --rm bitnami/memcached-exporter --help
 ```
-
 
 You can also find more information in [the Memcached Exporter official documentation](https://github.com/prometheus/memcached_exporter).
 
@@ -99,7 +97,7 @@ You can also find more information in [the Memcached Exporter official documenta
 The Bitnami Memcached Exporter Docker image sends the container logs to `stdout`. To view the logs:
 
 ```console
-$ docker logs memcached-exporter
+docker logs memcached-exporter
 ```
 
 You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
@@ -113,7 +111,7 @@ Bitnami provides up-to-date versions of Memcached Exporter, including security p
 #### Step 1: Get the updated image
 
 ```console
-$ docker pull bitnami/memcached-exporter:latest
+docker pull bitnami/memcached-exporter:latest
 ```
 
 #### Step 2: Stop the running container
@@ -121,13 +119,13 @@ $ docker pull bitnami/memcached-exporter:latest
 Stop the currently running container using the command
 
 ```console
-$ docker stop memcached-exporter
+docker stop memcached-exporter
 ```
 
 #### Step 3: Remove the currently running container
 
 ```console
-$ docker rm -v memcached-exporter
+docker rm -v memcached-exporter
 ```
 
 #### Step 4: Run the new image
@@ -135,7 +133,7 @@ $ docker rm -v memcached-exporter
 Re-create your container from the new image.
 
 ```console
-$ docker run --name memcached-exporter bitnami/memcached-exporter:latest
+docker run --name memcached-exporter bitnami/memcached-exporter:latest
 ```
 
 ## Contributing
@@ -154,7 +152,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

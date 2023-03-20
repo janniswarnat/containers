@@ -1,17 +1,17 @@
 {
     "gosu": {
         "arch": "amd64",
-        "digest": "9ab9654690d90d3c49ff66fb1eb286487e318adc899d036bc45922f6b176865b",
+        "digest": "bf2b90a31df691e3648c4a41190a926bb638c3a9fa1dfcde36623ce1bfaadc23",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.16.0-1"
+        "version": "1.16.0-3"
     },
     "node": {
         "arch": "amd64",
-        "digest": "79333c705a938e1fbf95a1e226e03dc7f5468d09cae662ddbefbb627b75ee09a",
+        "digest": "6a3b2d1e7ab2f53f2f70faa3bab6406727c5024f73581294724b97eeb4ee4a2b",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "18.13.0-2"
+        "version": "18.15.0-1"
     },
     "odoo": {
         "arch": "amd64",
@@ -22,23 +22,23 @@
     },
     "postgresql-client": {
         "arch": "amd64",
-        "digest": "cc4ffded73d67d6a9b9b69f351a58b249086f4171c11c95164fd36715af5b810",
+        "digest": "f30b5782e06f5a81190143d77d76c364a73836ffa635b349478dcc1bee6b06ed",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "15.1.0-1"
+        "version": "15.2.0-2"
     },
     "python": {
         "arch": "amd64",
-        "digest": "0ebb2e2a096a25a338b73bf39090b32d8bd8bffcb586e3eff6a7d48b8a86355b",
+        "digest": "333f80bba973342bbeae2bd476b08145ca03c39815436cbea4a3435251fd7652",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "3.10.9-1"
+        "version": "3.10.10-5"
     },
     "render-template": {
         "arch": "amd64",
-        "digest": "57c1d857acbb187fcb98f4ba26d138af9d866f59ad38dd443a75c0a6422de994",
+        "digest": "d1a128e25098f793a92342efd5fa85c1075a2b21042929b269d23c6694e20c3b",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.0.5-0"
+        "version": "1.0.5-2"
     }
 }

@@ -3,14 +3,14 @@ FROM docker.io/bitnami/minideb:bullseye
 ARG JAVA_EXTRA_SECURITY_DIR="/bitnami/java/extra-security"
 ARG TARGETARCH
 
-LABEL org.opencontainers.image.authors="https://bitnami.com/contact" \
-      org.opencontainers.image.description="Application packaged by Bitnami" \
+LABEL org.opencontainers.image.base.name="docker.io/bitnami/minideb:bullseye" \
+      org.opencontainers.image.created="2023-03-13T13:56:11Z" \
+      org.opencontainers.image.description="Application packaged by VMware, Inc" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      org.opencontainers.image.ref.name="20.0.3-debian-11-r7" \
-      org.opencontainers.image.source="https://github.com/bitnami/containers/tree/main/bitnami/keycloak" \
+      org.opencontainers.image.ref.name="20.0.5-debian-11-r8" \
       org.opencontainers.image.title="keycloak" \
       org.opencontainers.image.vendor="VMware, Inc." \
-      org.opencontainers.image.version="20.0.3"
+      org.opencontainers.image.version="20.0.5"
 
 ENV HOME="/" \
     OS_ARCH="${TARGETARCH:-amd64}" \
@@ -23,10 +23,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN install_packages ca-certificates curl krb5-user libaio1 procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ && cd /tmp/bitnami/pkg/cache/ && \
     COMPONENTS=( \
-      "wait-for-port-1.0.6-0-linux-${OS_ARCH}-debian-11" \
-      "java-11.0.18-10-0-linux-${OS_ARCH}-debian-11" \
-      "keycloak-20.0.3-2-linux-${OS_ARCH}-debian-11" \
-      "gosu-1.16.0-1-linux-${OS_ARCH}-debian-11" \
+      "wait-for-port-1.0.6-1-linux-${OS_ARCH}-debian-11" \
+      "java-17.0.6-10-2-linux-${OS_ARCH}-debian-11" \
+      "keycloak-20.0.5-1-linux-${OS_ARCH}-debian-11" \
+      "gosu-1.16.0-2-linux-${OS_ARCH}-debian-11" \
     ) && \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
@@ -44,7 +44,7 @@ RUN chmod g+rwX /opt/bitnami
 COPY rootfs /
 RUN /opt/bitnami/scripts/java/postunpack.sh
 RUN /opt/bitnami/scripts/keycloak/postunpack.sh
-ENV APP_VERSION="20.0.3" \
+ENV APP_VERSION="20.0.5" \
     BITNAMI_APP_NAME="keycloak" \
     JAVA_HOME="/opt/bitnami/java" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/java/bin:/opt/bitnami/keycloak/bin:$PATH"

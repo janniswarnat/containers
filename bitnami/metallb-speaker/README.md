@@ -5,13 +5,12 @@
 > MetalLB is a load-balancer that allows enabling "LoadBalancer" service addresses in any bare-metal Kubernetes installation. MetalLB speaker is in charge of IP advertisement.
 
 [Overview of MetalLB Speaker](https://metallb.universe.tf/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-$ docker run --name metallb-speaker bitnami/metallb-speaker:latest
+docker run --name metallb-speaker bitnami/metallb-speaker:latest
 ```
 
 ## Why use Bitnami Images?
@@ -36,21 +35,21 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 The recommended way to get the Bitnami metallb-speaker Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/metallb-speaker).
 
 ```console
-$ docker pull bitnami/metallb-speaker:latest
+docker pull bitnami/metallb-speaker:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/metallb-speaker/tags/) in the Docker Hub Registry.
 
 ```console
-$ docker pull bitnami/metallb-speaker:[TAG]
+docker pull bitnami/metallb-speaker:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP:latest .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP:latest .
 ```
 
 ## Configuration
@@ -60,7 +59,7 @@ $ docker build -t bitnami/APP:latest .
 To run commands inside this container you can use `docker run`, for example to execute `metallb-speaker --version` you can follow the example below:
 
 ```console
-$ docker run --rm --name metallb-speaker bitnami/metallb-speaker:latest -- --version
+docker run --rm --name metallb-speaker bitnami/metallb-speaker:latest -- --version
 ```
 
 Consult the [metallb Reference Documentation](https://metallb.universe.tf/configuration/) to find the available configuration parameters. Note that this container is expected to be used in a Kubernetes cluster.
@@ -89,7 +88,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

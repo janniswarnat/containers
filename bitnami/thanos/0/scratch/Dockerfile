@@ -12,7 +12,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN install_packages ca-certificates curl
 RUN mkdir -p /tmp/bitnami/pkg/cache/ && cd /tmp/bitnami/pkg/cache/ && \
     COMPONENTS=( \
-      "thanos-0.30.1-1-linux-${OS_ARCH}-debian-11" \
+      "thanos-0.30.2-2-linux-${OS_ARCH}-debian-11" \
     ) && \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
@@ -32,14 +32,14 @@ ARG TARGETARCH
 
 ENV OS_ARCH="${TARGETARCH:-amd64}"
 
-LABEL org.opencontainers.image.authors="https://bitnami.com/contact" \
-      org.opencontainers.image.description="Application packaged by Bitnami" \
+LABEL org.opencontainers.image.base.name="scratch" \
+      org.opencontainers.image.created="2023-03-19T01:18:51Z" \
+      org.opencontainers.image.description="Application packaged by VMware, Inc" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      org.opencontainers.image.ref.name="0.30.1-scratch-r4" \
-      org.opencontainers.image.source="https://github.com/bitnami/containers/tree/main/bitnami/thanos" \
+      org.opencontainers.image.ref.name="0.30.2-scratch-r7" \
       org.opencontainers.image.title="thanos" \
       org.opencontainers.image.vendor="VMware, Inc." \
-      org.opencontainers.image.version="0.30.1"
+      org.opencontainers.image.version="0.30.2"
 
 COPY prebuildfs /
 COPY rootfs /

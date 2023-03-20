@@ -1,44 +1,44 @@
 {
     "gosu": {
         "arch": "amd64",
-        "digest": "9ab9654690d90d3c49ff66fb1eb286487e318adc899d036bc45922f6b176865b",
+        "digest": "bf2b90a31df691e3648c4a41190a926bb638c3a9fa1dfcde36623ce1bfaadc23",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.16.0-1"
+        "version": "1.16.0-3"
     },
     "mysql-client": {
         "arch": "amd64",
-        "digest": "16021bca72e714177049564fbbd73ea142b97eaa7a889afad64eca8fa353959f",
+        "digest": "6ed7c73b5e779521cf2f47a00ac54e6d2929213cb4eb3cbd9a4f12f84557c664",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "10.6.11-2"
+        "version": "10.6.12-2"
     },
     "postgresql-client": {
         "arch": "amd64",
-        "digest": "cc4ffded73d67d6a9b9b69f351a58b249086f4171c11c95164fd36715af5b810",
+        "digest": "f30b5782e06f5a81190143d77d76c364a73836ffa635b349478dcc1bee6b06ed",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "15.1.0-1"
+        "version": "15.2.0-2"
     },
     "redmine": {
         "arch": "amd64",
-        "digest": "31bfc798283740f16e253d691548104d7db8c55e3bd2ce6fbdb074dee98bf316",
+        "digest": "2e9c27061fa18451805c43b2ad8e2464d93dc3092ec4ade836ddaf265f095299",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "5.0.4-1"
+        "version": "5.0.5-1"
     },
     "ruby": {
         "arch": "amd64",
-        "digest": "b577d1f22323f236c985caec199676729c1bf104475a37cc85925d291685a71b",
+        "digest": "5ab43cc9190894791bc4314aa001e29fe71a967aa5628971f216a8887475b8ad",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "3.0.5-2"
+        "version": "3.0.5-5"
     },
     "yq": {
         "arch": "amd64",
-        "digest": "33fec06619aa3c1f7ea3c2516bf36f79af01354972ff06998ca6fe1d65078998",
+        "digest": "13a33ecf140c2b141bffd4969e38a75b67db29525f166d6a1c21b4a1b6aff2fd",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "4.30.8-1"
+        "version": "4.32.1-0"
     }
 }

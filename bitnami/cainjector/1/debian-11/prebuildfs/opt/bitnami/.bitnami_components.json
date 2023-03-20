@@ -1,9 +1,9 @@
 {
     "cainjector": {
         "arch": "amd64",
-        "digest": "fa9b1ded8a1f7aeb44ef8ae402bd9f288fa3ad4ed61964abd7b3c30c3e4f5019",
+        "digest": "7644a8e89ad0beac0fd4f0c7e41c05b102cf64eb2e404425ed4eb7f32b88ef02",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.11.0-1"
+        "version": "1.11.0-3"
     }
 }

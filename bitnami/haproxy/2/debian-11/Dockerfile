@@ -2,14 +2,14 @@ FROM docker.io/bitnami/minideb:bullseye
 
 ARG TARGETARCH
 
-LABEL org.opencontainers.image.authors="https://bitnami.com/contact" \
-      org.opencontainers.image.description="Application packaged by Bitnami" \
+LABEL org.opencontainers.image.base.name="docker.io/bitnami/minideb:bullseye" \
+      org.opencontainers.image.created="2023-03-18T21:46:41Z" \
+      org.opencontainers.image.description="Application packaged by VMware, Inc" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      org.opencontainers.image.ref.name="2.7.2-debian-11-r3" \
-      org.opencontainers.image.source="https://github.com/bitnami/containers/tree/main/bitnami/haproxy" \
+      org.opencontainers.image.ref.name="2.7.5-debian-11-r0" \
       org.opencontainers.image.title="haproxy" \
       org.opencontainers.image.vendor="VMware, Inc." \
-      org.opencontainers.image.version="2.7.2"
+      org.opencontainers.image.version="2.7.5"
 
 ENV HOME="/" \
     OS_ARCH="${TARGETARCH:-amd64}" \
@@ -19,11 +19,10 @@ ENV HOME="/" \
 COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
-RUN install_packages ca-certificates curl libssl1.1 procps
+RUN install_packages ca-certificates curl libcrypt1 liblua5.4-0 libssl1.1 lua5.4 procps
 RUN mkdir -p /tmp/bitnami/pkg/cache/ && cd /tmp/bitnami/pkg/cache/ && \
     COMPONENTS=( \
-      "haproxy-dataplaneapi-2.7.1-1-linux-${OS_ARCH}-debian-11" \
-      "haproxy-2.7.2-0-linux-${OS_ARCH}-debian-11" \
+      "haproxy-2.7.5-0-linux-${OS_ARCH}-debian-11" \
     ) && \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
@@ -39,9 +38,9 @@ RUN apt-get autoremove --purge -y curl && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN chmod g+rwX /opt/bitnami
 
-ENV APP_VERSION="2.7.2" \
+ENV APP_VERSION="2.7.5" \
     BITNAMI_APP_NAME="haproxy" \
-    PATH="/opt/bitnami/haproxy-dataplaneapi/bin:/opt/bitnami/haproxy/sbin:$PATH"
+    PATH="/opt/bitnami/haproxy-dataplaneapi/bin:/opt/bitnami/haproxy/sbin:/opt/bitnami/lua/bin:$PATH"
 
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/haproxy/sbin/haproxy" ]

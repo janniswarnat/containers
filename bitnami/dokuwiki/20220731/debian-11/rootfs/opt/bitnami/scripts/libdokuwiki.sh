@@ -62,7 +62,6 @@ dokuwiki_initialize() {
             dokuwiki_pass_wizard
             web_server_stop
             dokuwiki_enable_friendly_urls
-            dokuwiki_configure_DOKU_INC
         fi
 
         info "Persisting DokuWiki installation"
@@ -71,6 +70,7 @@ dokuwiki_initialize() {
         info "Restoring persisted DokuWiki installation"
         restore_persisted_app "$app_name" "$DOKUWIKI_DATA_TO_PERSIST"
     fi
+    dokuwiki_configure_DOKU_INC
 
     # Avoid exit code of previous commands to affect the result of this function
     true
@@ -141,6 +141,6 @@ dokuwiki_configure_DOKU_INC() {
     # Fix DOKU_INC, since we split application from state, DokuWiki's plugins and templates need to know where they live
     info "Fix DOKU_INC variable"
     auto_prepend_file="$DOKUWIKI_BASE_DIR/conf/auto_prepend.php"
-    printf '<?php\ndefine("DOKU_INC", "%s/");\n' "$DOKUWIKI_BASE_DIR" >>"$auto_prepend_file"
+    printf '<?php\ndefine("DOKU_INC", "%s/");\n' "$DOKUWIKI_BASE_DIR" >"$auto_prepend_file"
     php_conf_set auto_prepend_file "$auto_prepend_file"
 }

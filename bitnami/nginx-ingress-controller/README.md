@@ -5,7 +5,6 @@
 > NGINX Ingress Controller is an Ingress controller that manages external access to HTTP services in a Kubernetes cluster using NGINX.
 
 [Overview of NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -13,7 +12,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 Deploy NGINX Ingress Controller for Kubernetes on your [Kubernetes cluster](https://kubernetes.io/docs/concepts/services-networking/ingress/).
 
 ```console
-$ docker run --name nginx-ingress-controller bitnami/nginx-ingress-controller:latest
+docker run --name nginx-ingress-controller bitnami/nginx-ingress-controller:latest
 ```
 
 ## Why use Bitnami Images?
@@ -45,27 +44,28 @@ For further documentation, please check [here](https://github.com/kubernetes/ing
 
 ## Contributing
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/blob/main/bitnami/nginx-ingress-controller/issues) or submitting a [pull
-request](https://github.com/bitnami/containers/blob/main/bitnami/nginx-ingress-controller/pulls) with your contribution.
+We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues/new) or submitting a [pull
+request](https://github.com/bitnami/containers/pulls/new) with your contribution.
 
 ## Issues
 
 If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to include the following information in your issue:
 
-- Host OS and version
-- Docker version (`docker version`)
-- Output of `docker info`
-- Version of this container
-- The command you used to run the container, and any relevant output you saw (masking any sensitive information)
+* Host OS and version
+* Docker version (`docker version`)
+* Output of `docker info`
+* Version of this container
+* The command you used to run the container, and any relevant output you saw (masking any sensitive information)
 
 ## License
+
 Copyright &copy; 2023 Bitnami
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

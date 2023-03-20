@@ -87,6 +87,12 @@ redis_cluster_override_conf() {
         # Always set the announce-ip to avoid issues when using proxies and traffic restrictions.
         redis_conf_set cluster-announce-ip "$(get_machine_ip)"
     fi
+    if ! is_empty_value "$REDIS_CLUSTER_ANNOUNCE_HOSTNAME"; then
+        redis_conf_set "cluster-announce-hostname" "$REDIS_CLUSTER_ANNOUNCE_HOSTNAME"
+    fi
+    if ! is_empty_value "$REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE"; then
+        redis_conf_set "cluster-preferred-endpoint-type" "$REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE"
+    fi
     if is_boolean_yes "$REDIS_TLS_ENABLED"; then
         redis_conf_set tls-cluster yes
         redis_conf_set tls-replication yes
@@ -137,7 +143,7 @@ redis_cluster_create() {
 
     for node in "${nodes[@]}"; do
         read -r -a host_and_port <<< "$(to_host_and_port "$node")"
-        wait_command="redis-cli -h ${host_and_port[0]} -p ${host_and_port[1]} ping"
+        wait_command="timeout -v 5 redis-cli -h ${host_and_port[0]} -p ${host_and_port[1]} ping"
         if is_boolean_yes "$REDIS_TLS_ENABLED"; then
             wait_command="${wait_command:0:-5} --tls --cert ${REDIS_TLS_CERT_FILE} --key ${REDIS_TLS_KEY_FILE} --cacert ${REDIS_TLS_CA_FILE} ping"
         fi

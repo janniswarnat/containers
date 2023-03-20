@@ -1,44 +1,44 @@
 {
     "drupal": {
         "arch": "amd64",
-        "digest": "1448d6b7d666ccabd5e98fb43e1a70324ff0bd86115c2954bd1a5b049f15113e",
+        "digest": "c41ce13aa284eab744583d99194df1e131e3776b62128d9696ec3fb65dd9da8c",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "9.5.2-1"
+        "version": "9.5.5-1"
     },
     "gosu": {
         "arch": "amd64",
-        "digest": "9ab9654690d90d3c49ff66fb1eb286487e318adc899d036bc45922f6b176865b",
+        "digest": "bf2b90a31df691e3648c4a41190a926bb638c3a9fa1dfcde36623ce1bfaadc23",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.16.0-1"
+        "version": "1.16.0-3"
     },
     "mysql-client": {
         "arch": "amd64",
-        "digest": "16021bca72e714177049564fbbd73ea142b97eaa7a889afad64eca8fa353959f",
+        "digest": "6ed7c73b5e779521cf2f47a00ac54e6d2929213cb4eb3cbd9a4f12f84557c664",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "10.6.11-2"
+        "version": "10.6.12-2"
     },
     "nginx": {
         "arch": "amd64",
-        "digest": "bb184b4a6fa54bc7bf3fb5d2a861b8219c8769c7b21076fdfe9c74a641b0aa9b",
+        "digest": "dc08b425a75d9b60c6352daef53932c9766023086a89978ee3a95b5bc1e1818f",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.23.3-1"
+        "version": "1.23.3-4"
     },
     "php": {
         "arch": "amd64",
-        "digest": "4dfcd710baee20f9690f910709c5fca5e2bf63d0cf275cf0a2ada72733b50374",
+        "digest": "29a2bd14bc69f30f96706c9d26c42e4613c50a663ddcd1c10b20766ca261127b",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "8.1.14-1"
+        "version": "8.1.17-1"
     },
     "render-template": {
         "arch": "amd64",
-        "digest": "57c1d857acbb187fcb98f4ba26d138af9d866f59ad38dd443a75c0a6422de994",
+        "digest": "d1a128e25098f793a92342efd5fa85c1075a2b21042929b269d23c6694e20c3b",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.0.5-0"
+        "version": "1.0.5-2"
     }
 }

@@ -5,20 +5,19 @@
 > Supabase Realtime is a component of Supabase. Supabase is an open source implementation of Firebase. Supabase Realtime tracks and synchronizes changes in PostgreSQL instances using Websockets.
 
 [Overview of Supabase Realtime](https://github.com/supabase/realtime)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-$ docker run -it --name supabase-realtime bitnami/supabase-realtime
+docker run -it --name supabase-realtime bitnami/supabase-realtime
 ```
 
 ### Docker Compose
 
 ```console
-$ curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/supabase-realtime/docker-compose.yml > docker-compose.yml
-$ docker-compose up -d
+curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/supabase-realtime/docker-compose.yml > docker-compose.yml
+docker-compose up -d
 ```
 
 ## Why use Bitnami Images?
@@ -43,21 +42,21 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 The recommended way to get the Bitnami Supabase Realtime Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/supabase-realtime).
 
 ```console
-$ docker pull bitnami/supabase-realtime:latest
+docker pull bitnami/supabase-realtime:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/supabase-realtime/tags/) in the Docker Hub Registry.
 
 ```console
-$ docker pull bitnami/supabase-realtime:[TAG]
+docker pull bitnami/supabase-realtime:[TAG]
 ```
 
 If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
 
 ```console
-$ git clone https://github.com/bitnami/containers.git
-$ cd bitnami/APP/VERSION/OPERATING-SYSTEM
-$ docker build -t bitnami/APP:latest .
+git clone https://github.com/bitnami/containers.git
+cd bitnami/APP/VERSION/OPERATING-SYSTEM
+docker build -t bitnami/APP:latest .
 ```
 
 ## Maintenance
@@ -69,7 +68,7 @@ Bitnami provides up-to-date versions of Supabase Realtime, including security pa
 #### Step 1: Get the updated image
 
 ```console
-$ docker pull bitnami/supabase-realtime:latest
+docker pull bitnami/supabase-realtime:latest
 ```
 
 or if you're using Docker Compose, update the value of the image property to `bitnami/supabase-realtime:latest`.
@@ -77,13 +76,13 @@ or if you're using Docker Compose, update the value of the image property to `bi
 #### Step 2: Remove the currently running container
 
 ```console
-$ docker rm -v supabase-realtime
+docker rm -v supabase-realtime
 ```
 
 or using Docker Compose:
 
 ```console
-$ docker-compose rm -v supabase-realtime
+docker-compose rm -v supabase-realtime
 ```
 
 #### Step 3: Run the new image
@@ -91,13 +90,13 @@ $ docker-compose rm -v supabase-realtime
 Re-create your container from the new image.
 
 ```console
-$ docker run --name supabase-realtime bitnami/supabase-realtime:latest
+docker run --name supabase-realtime bitnami/supabase-realtime:latest
 ```
 
 or using Docker Compose:
 
 ```console
-$ docker-compose up supabase-realtime
+docker-compose up supabase-realtime
 ```
 
 ## Configuration
@@ -107,7 +106,7 @@ $ docker-compose up supabase-realtime
 To run commands inside this container you can use `docker run`, for example to execute `supabase-realtime --help` you can follow the example below:
 
 ```console
-$ docker run --rm --name supabase-realtime bitnami/supabase-realtime:latest --help
+docker run --rm --name supabase-realtime bitnami/supabase-realtime:latest --help
 ```
 
 Check the [official Supabase Realtime documentation](https://github.com/supabase/realtime) for more information about how to use Supabase Realtime.
@@ -128,7 +127,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
